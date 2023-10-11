@@ -29,7 +29,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
     } else {
       loginModal.onOpen();
     }
-  }, [currentUser])
+  }, [currentUser, loginModal, router])
 
   return (
     <div className='ml-auto md:ml-0'>

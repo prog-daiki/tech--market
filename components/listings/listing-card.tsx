@@ -44,7 +44,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
     } else {
       router.push(`/listings/${data.id}`)
     }
-  }, [loading])
+  }, [loading, data.id, router])
 
   return (
     <div className="flex flex-col space-y-2">
