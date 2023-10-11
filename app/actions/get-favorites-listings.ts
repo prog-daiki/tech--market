@@ -1,13 +1,12 @@
 import prisma from "@/lib/db";
 import getCurrentUser from "./get-current-user";
-import { redirect } from "next/navigation";
 
 export default async function getFavoriteListings() {
   try {
     const currentUser = await getCurrentUser();
 
     if (!currentUser) {
-      redirect("/");
+      return [];
     }
 
     const favorites = await prisma.listing.findMany({

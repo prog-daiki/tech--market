@@ -5,7 +5,6 @@ import Gallery from '@/components/gallery'
 import getCurrentUser from '@/app/actions/get-current-user'
 import Avatar from '@/components/avatar'
 import { redirect } from 'next/navigation'
-import { Button } from '@/components/ui/button'
 import PurchaseButton from './_components/purchase-button'
 
 const ListingPage = async ({ params }: { params: { listingId: string } }) => {
