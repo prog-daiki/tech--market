@@ -1,10 +1,10 @@
 "use client"
 
+import qs from "query-string";
 import { Search as SearchIcon } from "lucide-react";
 import { Input } from "../ui/input";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import qs from "query-string";
 import { useDebounce } from "@/hooks/use-debounce";
 
 const Search = () => {
@@ -13,10 +13,12 @@ const Search = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const isMainPage = pathname === '/';
   const currentCategoryId = searchParams?.get("categoryId");
 
   useEffect(() => {
+    if (!pathname) {
+      return
+    }
     const url = qs.stringifyUrl({
       url: pathname,
       query: {
@@ -27,10 +29,6 @@ const Search = () => {
 
     router.push(url);
   }, [debouncedValue, currentCategoryId, router, pathname])
-
-  if (!isMainPage) {
-    return null;
-  }
 
   return (
     <div className="relative">
