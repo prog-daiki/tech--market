@@ -6,6 +6,7 @@ import getCurrentUser from '@/app/actions/get-current-user'
 import Avatar from '@/components/avatar'
 import { redirect } from 'next/navigation'
 import PurchaseButton from './_components/purchase-button'
+import PriceFormat from '@/components/price-format'
 
 const ListingPage = async ({ params }: { params: { listingId: string } }) => {
   const currentUser = await getCurrentUser();
@@ -49,7 +50,7 @@ const ListingPage = async ({ params }: { params: { listingId: string } }) => {
               <p className='text-lg font-semibold text-black'>{listing.description}</p>
             </div>
             <div className='p-4 border-[1px] rounded-lg'>
-              <div className='p-4 border-b-2 text-xl font-bold'>¥ {listing.price}</div>
+              <div className='p-4 border-b-2 text-xl font-bold'>¥ <PriceFormat price={listing.price } /></div>
               <div className='p-4'>
                 <PurchaseButton listing={listing} currentUser={currentUser!} />
               </div>

@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useCallback, useState } from "react";
+import PriceFormat from "../price-format";
 
 interface ListingCardProps {
   data: Listing & {
@@ -79,7 +80,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
           </div>
           <div className="flex flex-row items-center gap-1">
             <div className="font-semibold">
-              ¥ {data.price}
+              {/* ¥ {data.price} */}
+              ¥ <PriceFormat price={data.price } />
             </div>
           </div>
         </div>
